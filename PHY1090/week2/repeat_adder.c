@@ -3,6 +3,7 @@
 
 int main(int argc, char **argv) 
 {
+	clock_t on = clock();
 	// creates and initialises the variables
 	int i, input, output, multiple;
 	i = input = output = multiple = 0;
@@ -32,4 +33,6 @@ int main(int argc, char **argv)
 	// prints the output
 	printf("%d\n", output);
 	return 0;
+	clock_t off = clock()
+	printf("Elapsed: %f seconds\n", (double)(off - on) / CLOCKS_PER_SEC);
 }
