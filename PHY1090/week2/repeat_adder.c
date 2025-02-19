@@ -35,5 +35,6 @@ int main(int argc, char **argv)
 	printf("%d\n", output);
 	return 0;
 	clock_t off = clock()
-	printf("Elapsed: %f seconds\n", (double)(off - on) / CLOCKS_PER_SEC);
+	run_time = (double)(off - on) / CLOCKS_PER_SEC);
+	printf("Elapsed: %f seconds\n", run_time);
 }
