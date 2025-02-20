@@ -26,7 +26,7 @@ def main():
 	run_time = end_time - start_time
 	return run_time
 cwd = Path.cwd()
-fn = cwd + '/results/week1'
+fn = (cwd/'results'/'week1').mkdir(parents=True)
 output_file = open(fn+'/output_times.txt', 'a')
 if __name__ == "__main__":
         output_file.write(main())
