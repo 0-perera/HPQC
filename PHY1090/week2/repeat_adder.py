@@ -10,7 +10,7 @@ def main():
 		# converts the first two arguments to integers
                 in_arg = int(sys.argv[1])
 		multiple = int(sys.argv[2])
-        except: # (argc != 2)
+	except: # (argc != 2)
 		# raises an error
 		raise Exception("Incorrect arguments.\nUsage: python repeat_adder.py [NUM] [NUM]\ne.g.\npython repeat_adder.py 2 3")
 	
