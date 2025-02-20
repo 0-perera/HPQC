@@ -8,7 +8,7 @@ def main():
 	try:
 		# checks if there are the right number of arguments
 		# converts the first two arguments to integers
-                in_arg = int(sys.argv[1])
+		in_arg = int(sys.argv[1])
 		multiple = int(sys.argv[2])
 	except: # (argc != 2)
 		# raises an error
