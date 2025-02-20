@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 int main(int argc, char **argv) 
-{	clock_t start_time = clock()'
+{	clock_t start_time = clock();
 	// creates and initialises the variables
 	int i, input, output, multiple;
 	i = input = output = multiple = 0;
