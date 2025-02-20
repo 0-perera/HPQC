@@ -22,7 +22,7 @@ def main():
 	print("{}\n".format(output))
 	end_time = time.time()
 	run_time = end_time() - start_time()
-	print(f'run_time = {run_time}'
+	print(f'run_time = {run_time}')
 	
 if __name__ == "__main__":
         main()
