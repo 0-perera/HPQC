@@ -3,8 +3,8 @@
 #include <time.h>
 
 int main(int argc, char **argv) 
-{	t_clock start_time, end_time;
- 	start_time = clock();
+{	
+ 	t_clock start_time = clock();
 	// creates and initialises the variables
 	int i, input, output, multiple;
 	i = input = output = multiple = 0;
