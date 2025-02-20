@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 int main(int argc, char **argv) 
-{
+{	clock_t start_time = clock()'
 	// creates and initialises the variables
 	int i, input, output, multiple;
 	i = input = output = multiple = 0;
@@ -32,7 +32,7 @@ int main(int argc, char **argv)
 	printf("%d\n", output);
 	return 0;
 
-	clock_t off = clock();
-	run_time = (double)(off - on) / (CLOCKS_PER_SEC);
+	clock_t end_time = clock();
+	run_time = (double)(clock_end - clock_start) / CLOCKS_PER_SEC;
 	printf("Elapsed: %f seconds\n", run_time);
 }
