@@ -30,11 +30,11 @@ int main(int argc, char **argv)
 		// adds the index to the output
 		output = output + multiple;
 	}
-
+	printf('heyo');
 	// prints the output
 	printf("%d\n", output);
 	return 0;
-	clock_t off = clock()
+	clock_t off = clock();
 	run_time = (double)(off - on) / CLOCKS_PER_SEC);
 	printf("Elapsed: %f seconds\n", run_time);
 }
