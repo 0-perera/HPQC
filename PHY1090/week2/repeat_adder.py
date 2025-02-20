@@ -15,7 +15,7 @@ def main():
 		raise Exception("Incorrect arguments.\nUsage: python repeat_adder.py [NUM] [NUM]\ne.g.\npython repeat_adder.py 2 3")
 	
 	# iterates over all numbers up to the input
-        for i in range(in_arg):
+	for i in range(in_arg):
 		# adds the index to the output
 		output = output + multiple
 	
