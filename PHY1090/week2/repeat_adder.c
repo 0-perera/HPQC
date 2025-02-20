@@ -3,7 +3,8 @@
 #include <time.h>
 
 int main(int argc, char **argv) 
-{	clock_t start_time = clock();
+{	time_t start_time, end_time;
+ 	time(&start_time);
 	// creates and initialises the variables
 	int i, input, output, multiple;
 	i = input = output = multiple = 0;
@@ -33,8 +34,8 @@ int main(int argc, char **argv)
 	printf("%d\n", output);
 	return 0;
 
-	clock_t end_time = clock();
-	double run_time = (double)(end_time - start_time) / CLOCKS_PER_SEC;
+	time(&end_time);
+	double run_time = difftime(end_time, start_time);
 	printf("Elapsed: %f seconds\n", run_time);
  	return 0;
 }
