@@ -32,7 +32,6 @@ int main(int argc, char **argv)
 	}
 	// prints the output
 	printf("%d\n", output);
-	return 0;
 
 	time(&end_time);
 	double run_time = difftime(end_time, start_time);
