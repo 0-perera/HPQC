@@ -33,6 +33,6 @@ int main(int argc, char **argv)
 	return 0;
 
 	clock_t end_time = clock();
-	run_time = (double)(clock_end - clock_start) / CLOCKS_PER_SEC;
+	run_time = (double)(end_time - start_time) / CLOCKS_PER_SEC;
 	printf("Elapsed: %f seconds\n", run_time);
 }
