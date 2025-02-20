@@ -4,7 +4,6 @@ import time
 def main(): 
 	start_time = time.time()
 	output = 0
-
 	# checks if there are the right number of arguments
         try:
 		# converts the first two arguments to integers
@@ -25,6 +24,5 @@ def main():
 	run_time = end_time() - start_time()
 	print(f'run_time = {run_time}'
 	
-
 if __name__ == "__main__":
         main()
