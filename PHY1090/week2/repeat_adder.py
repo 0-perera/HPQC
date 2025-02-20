@@ -5,7 +5,6 @@ def main():
 	print('fine')
 	start_time = time.time()
 	output = 0
-        print('fine2')
  #	# checks if there are the right number of arguments
  #        try:
 	# 	# converts the first two arguments to integers
