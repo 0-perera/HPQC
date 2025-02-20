@@ -6,7 +6,7 @@ def main():
 	start_time = time.time()
 	output = 0
  	# checks if there are the right number of arguments
- #        try:
+        try:
 	# 	# converts the first two arguments to integers
  #                in_arg = int(sys.argv[1])
 	# 	multiple = int(sys.argv[2])
