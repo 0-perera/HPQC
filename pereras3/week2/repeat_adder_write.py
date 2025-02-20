@@ -25,7 +25,8 @@ def main():
 	run_time = end_time - start_time
 	return run_time
 
-output_file = open('output_times.txt', '+a')
+fn = 'C:/Users/Sofia/OneDrive - Dublin City University/24.25/quantum_computing/individual_tasks/week1'
+output_file = open(fn+'output_times.txt', '+a')
 if __name__ == "__main__":
         output_file.write(main())
 output_file.close()
