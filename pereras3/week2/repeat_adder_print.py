@@ -37,7 +37,7 @@ def main():
 		
 		output_text = open('/output_times.txt', 'a')
 		out_file = open('/output_times.csv', 'a')
-		output_text.writelines(f'for {goal} of {in_arg} x {multiple}, the runtime was {run_time}s.\n}')
+		output_text.writelines(f'for {goal} of {in_arg} x {multiple}, the runtime was {run_time}s.\n')
 		output_file.writelines(f'{goal}, {in_arg}, {multiple} ./n')
 		output_file.close()
 		output_tetx.close()
