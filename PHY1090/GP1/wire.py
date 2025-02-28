@@ -141,17 +141,15 @@ class ElectronElectron:
         self.electrons = []
 
     def scatter(self, position, queue, electrons):
-	# Constants:
-	k_e=8.99e9        # Coulomb's constant (nm^2/C^2 )
-	e_charge=1.6e-19  # Electrons charge
-	
-	# move the elctron in the random direction given by the def unit_vector
-	move_x, move_y, move_z = unit_vector()
-	new_position = (position[0] + move_x * random.uniform(0, 1),
-		    position[1] + move_y * random.uniform(0, 1))
-	    
-	# Evaluate Coulomb's repulsion of the elcectrons and the ones sourranding it
-	for electron in electrons:
+# Constants:
+	    k_e=8.99e9        # Coulomb's constant (nm^2/C^2 )
+	    e_charge=1.6e-19  # Electrons charge
+	    # move the elctron in the random direction given by the def unit_vector
+	    move_x, move_y, move_z = unit_vector()
+	    new_position = (position[0] + move_x * random.uniform(0, 1),
+	    position[1] + move_y * random.uniform(0, 1))
+	    # Evaluate Coulomb's repulsion of the elcectrons and the ones sourranding it
+	    for electron in electrons:
 		if electron != position: # avoid electrons which are in the same location, or self-interaction
 			distance = np.linalg.norm(np.array(new_position) - np.array(electron))  # distance between electrons
 			# if electrons are too close,  calculate repulsion, else: no interaction
