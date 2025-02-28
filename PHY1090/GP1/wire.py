@@ -192,69 +192,51 @@ def run(self):
         paths           = []     # Number of trajectories examined (for plotting)
         grow            = []     # Growth rate (for plotting)
         grow_err        = []
-	#loop is run while electrons are still in the queue until the max number of paths is reached
-	while len(queue) > 0 and path_counter < maximum_paths:
-	    a = 2
-	    r = queue.pop()
-		while not self.scatter(r, queue, self.electrons):
-			shape.sample(r)
-		if path_counter%update_interval == 0:
-			queue_length.append(len(queue))
-			paths.append(len(queue_length)*update_interval )
-			plt.figure( 1 )plt.cla()
-			plt.tick_params(axis='both', which='major', labelsize=plt_labsiz)
-			plt.plot( paths , np.array( queue_length ) )
-			
-			
-			if len(paths) > 2:
-				p , s = exponential().fit( paths, np.array( queue_length ) )
-				grow.append( p[1] )
-				grow_err.append( s[1] )
-				if True:
-		                        plt.plot( paths , p[0]*np.exp( p[1]*np.array( paths ) ) )
-		                        plt.plot( paths , p[0]*np.exp( (p[1]+s[1])*np.array( paths ) ) )
-		                        plt.plot( paths , p[0]*np.exp( (p[1]-s[1])*np.array( paths ) ) )
-			
-				
-#uses expodential plot to show the growth rate and errors
-			
-#scatter function to demonstrate electron's movement through the wire
-		
-		    
-                
-#checks the queue length and paths, plots the electrons in queue vs the number of paths
-  #           
-	     
+#loop is run while electrons are still in the queue until the max number of paths is reached
+        while len(queue) > 0 and path_counter < maximum_paths:
 
-			if True:
-	                        plt.plot( paths , p[0]*np.exp( p[1]*np.array( paths ) ) )
-	                        plt.plot( paths , p[0]*np.exp( (p[1]+s[1])*np.array( paths ) ) )
-	                        plt.plot( paths , p[0]*np.exp( (p[1]-s[1])*np.array( paths ) ) )
-			]else:
-	                        plt.plot( paths , p[0]*(p[1]*np.array( paths ) + 1.0) )
-	                        plt.plot( paths , p[0]*((p[1]+s[1])*np.array( paths ) + 1.0) )
-	                        plt.plot( paths , p[0]*((p[1]-s[1])*np.array( paths ) + 1.0) )
-	                    plt.xlabel( r'Paths' , fontsize=plt_labsiz)
-	                    plt.ylabel( r'Queued Test Particles' , fontsize=plt_labsiz)
-	                    plt.figure( 2 )
-	                    plt.cla()
-	                    plt.errorbar( paths[2:] , grow , yerr=grow_err , fmt='o' )
-	                    plt.xlabel( r'Paths' , fontsize=plt_labsiz)
-	                    plt.ylabel( r'Growth Rate' , fontsize=plt_labsiz)
-	                    plt.tick_params(axis='both', which='major', labelsize=plt_labsiz)
-		    plt.pause( 0.001 )
-            	path_counter += 1
+            r = queue.pop()
+#scatter function to demonstrate electron's movement through the wire
+            while not self.scatter(r, queue, self.electrons):
+                shape.sample(r)
+#checks the queue length and paths, plots the electrons in queue vs the number of paths
+            if path_counter%update_interval == 0:
+                queue_length.append( len( queue ) )
+                paths.append( len(queue_length)*update_interval )
+                plt.figure( 1 )
+                plt.cla()
+                plt.tick_params(axis='both', which='major', labelsize=plt_labsiz)
+                plt.plot( paths , np.array( queue_length ) )
 #uses expodential plot to show the growth rate and errors                
-		    #
-			
+		if len(paths) > 2:
+                    p , s = exponential().fit( paths, np.array( queue_length ) )
+                    grow.append( p[1] )
+                    grow_err.append( s[1] )
+                    if True:
+                        plt.plot( paths , p[0]*np.exp( p[1]*np.array( paths ) ) )
+                        plt.plot( paths , p[0]*np.exp( (p[1]+s[1])*np.array( paths ) ) )
+                        plt.plot( paths , p[0]*np.exp( (p[1]-s[1])*np.array( paths ) ) )
+                    else:
+                        plt.plot( paths , p[0]*(p[1]*np.array( paths ) + 1.0) )
+                        plt.plot( paths , p[0]*((p[1]+s[1])*np.array( paths ) + 1.0) )
+                        plt.plot( paths , p[0]*((p[1]-s[1])*np.array( paths ) + 1.0) )
+                    plt.xlabel( r'Paths' , fontsize=plt_labsiz)
+                    plt.ylabel( r'Queued Test Particles' , fontsize=plt_labsiz)
+                    plt.figure( 2 )
+                    plt.cla()
+                    plt.errorbar( paths[2:] , grow , yerr=grow_err , fmt='o' )
+                    plt.xlabel( r'Paths' , fontsize=plt_labsiz)
+                    plt.ylabel( r'Growth Rate' , fontsize=plt_labsiz)
+                    plt.tick_params(axis='both', which='major', labelsize=plt_labsiz)
+                plt.pause( 0.001 )
+            path_counter += 1
         shape.plot_density( 3 )
 #indicate when queue is empty or max number of paths reached and the loop stops
         if len( queue ) == 0:
             sys.stderr.write( 'Stopped.  Queue empty.\n' )
         else:
             sys.stderr.write( 'Stopped.  Maximum paths reached.\n' )
-        sys.stderr.flush()  
-
+        sys.stderr.flush() 
 
 
 
