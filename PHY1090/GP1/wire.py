@@ -194,6 +194,7 @@ def run(self):
         grow_err        = []
 #loop is run while electrons are still in the queue until the max number of paths is reached
         while len(queue) > 0 and path_counter < maximum_paths:
+		a = 2
 		r = queue.pop()
 		while not self.scatter(r, queue, self.electrons):
 			shape.sample(r)
