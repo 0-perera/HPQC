@@ -192,8 +192,8 @@ def run(self):
         paths           = []     # Number of trajectories examined (for plotting)
         grow            = []     # Growth rate (for plotting)
         grow_err        = []
-#loop is run while electrons are still in the queue until the max number of paths is reached
-        while len(queue) > 0 and path_counter < maximum_paths:
+	#loop is run while electrons are still in the queue until the max number of paths is reached
+	while len(queue) > 0 and path_counter < maximum_paths:
 		a = 2
 		r = queue.pop()
 		while not self.scatter(r, queue, self.electrons):
