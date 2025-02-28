@@ -201,21 +201,21 @@ def run(self):
                 shape.sample(r)
 #checks the queue length and paths, plots the electrons in queue vs the number of paths
             if path_counter%update_interval == 0:
-		    queue_length.append( len( queue ) )
-		    paths.append( len(queue_length)*update_interval )
-		    plt.figure( 1 )
-		    plt.cla()
-		    plt.tick_params(axis='both', which='major', labelsize=plt_labsiz)
-		    plt.plot( paths , np.array( queue_length ) )
-		    if len(paths) > 2:
-			    p , s = exponential().fit( paths, np.array( queue_length ) )
-			    grow.append( p[1] )
-			    grow_err.append( s[1] )
-			    if True:
+		queue_length.append( len( queue ) )
+		paths.append( len(queue_length)*update_interval )
+		plt.figure( 1 )
+		plt.cla()
+		plt.tick_params(axis='both', which='major', labelsize=plt_labsiz)
+		plt.plot( paths , np.array( queue_length ) )
+		if len(paths) > 2:
+			p , s = exponential().fit( paths, np.array( queue_length ) )
+			grow.append( p[1] )
+			grow_err.append( s[1] )
+			if True:
 	                        plt.plot( paths , p[0]*np.exp( p[1]*np.array( paths ) ) )
 	                        plt.plot( paths , p[0]*np.exp( (p[1]+s[1])*np.array( paths ) ) )
 	                        plt.plot( paths , p[0]*np.exp( (p[1]-s[1])*np.array( paths ) ) )
-	                    else:
+			]else:
 	                        plt.plot( paths , p[0]*(p[1]*np.array( paths ) + 1.0) )
 	                        plt.plot( paths , p[0]*((p[1]+s[1])*np.array( paths ) + 1.0) )
 	                        plt.plot( paths , p[0]*((p[1]-s[1])*np.array( paths ) + 1.0) )
