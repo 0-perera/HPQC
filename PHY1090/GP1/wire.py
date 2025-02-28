@@ -150,28 +150,26 @@ class ElectronElectron:
 	    position[1] + move_y * random.uniform(0, 1))
 	    # Evaluate Coulomb's repulsion of the elcectrons and the ones sourranding it
 	    for electron in electrons:
-		if electron != position: # avoid electrons which are in the same location, or self-interaction
-			distance = np.linalg.norm(np.array(new_position) - np.array(electron))  # distance between electrons
-			# if electrons are too close,  calculate repulsion, else: no interaction
-			if distance < 1e-10: 
-			force = k_e * (e_charge ** 2) / distance ** 2
-			# modify the direction because of coulombs law
-			move_x += force * (new_position[0] - electron[0])
-			move_y += force * (new_position[1] - electron[1])
-		       
-			#update the position of the electron after Coulomb interaction
-			#new_position[0] += force_x 
-			#new_position[1] += forfe_y
-		       
-	ended = False
-	# make sure electrons are still inside of the wire
-	if not self.wire.inside(new_position):
-	    ended = True # dont save the new position
-	else:
-	    queue.appendleft(new_position)  # Store the new position
-	return ended	
+		    if electron != position: # avoid electrons which are in the same location, or self-interaction
+			    distance = np.linalg.norm(np.array(new_position) - np.array(electron))  # distance between electrons
+			    # if electrons are too close,  calculate repulsion, else: no interactio
+			    if distance < 1e-10:
+				    force = k_e * (e_charge ** 2) / distance ** 2
+				    # modify the direction because of coulombs law
+				    move_x += force * (new_position[0] - electron[0])
+				    move_y += force * (new_position[1] - electron[1])
 
+				    #update the position of the electron after Coulomb interaction
+				    new_position[0] += force_x
+				    new_position[1] += force_yended = False
+					# # make sure electrons are still inside of the wire
+					# if not self.wire.inside(new_position):
+					#     ended = True # dont save the new position
+					# else:
+					#     queue.appendleft(new_position)  # Store the new position
+					# return ended	
 
+				     
 
 
 #~~~~~~~run the simulation~~~~~~~~~#	
