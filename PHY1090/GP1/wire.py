@@ -162,12 +162,13 @@ class ElectronElectron:
 				    #update the position of the electron after Coulomb interaction
 				    new_position[0] += force_x
 				    new_position[1] += force_yended = False
-					# # make sure electrons are still inside of the wire
-					# if not self.wire.inside(new_position):
-					#     ended = True # dont save the new position
-					# else:
-					#     queue.appendleft(new_position)  # Store the new position
-					# return ended	
+
+				    # make sure electrons are still inside of the wire
+				    if not self.wire.inside(new_position):
+					    ended = True # dont save the new position
+				    else:
+					    queue.appendleft(new_position)  # Store the new position
+	    return ended  	
 
 				     
 
