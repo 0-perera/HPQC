@@ -202,7 +202,7 @@ def run(self):
 #checks the queue length and paths, plots the electrons in queue vs the number of paths
             if path_counter%update_interval == 0:
 		 queue_length.append(len(queue))
-		    paths.append(len(queue_length)*update_interval )
+		 paths.append(len(queue_length)*update_interval )
 		    plt.figure( 1 )
 		    plt.cla()
 		    plt.tick_params(axis='both', which='major', labelsize=plt_labsiz)
