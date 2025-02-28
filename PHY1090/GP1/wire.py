@@ -208,7 +208,7 @@ def run(self):
                 plt.tick_params(axis='both', which='major', labelsize=plt_labsiz)
                 plt.plot( paths , np.array( queue_length ) )
 #uses expodential plot to show the growth rate and errors                
-		if len(paths) > 2:
+		    if len(paths) > 2:
                     p , s = exponential().fit( paths, np.array( queue_length ) )
                     grow.append( p[1] )
                     grow_err.append( s[1] )
