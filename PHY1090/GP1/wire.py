@@ -209,17 +209,17 @@ def run(self):
                 plt.plot( paths , np.array( queue_length ) )
 #uses expodential plot to show the growth rate and errors                
 		if len(paths) > 2:
-                    p , s = exponential().fit( paths, np.array( queue_length ) )
-                    grow.append( p[1] )
-                    grow_err.append( s[1] )
-                    if True:
-                        plt.plot( paths , p[0]*np.exp( p[1]*np.array( paths ) ) )
-                        plt.plot( paths , p[0]*np.exp( (p[1]+s[1])*np.array( paths ) ) )
-                        plt.plot( paths , p[0]*np.exp( (p[1]-s[1])*np.array( paths ) ) )
-                    else:
-                        plt.plot( paths , p[0]*(p[1]*np.array( paths ) + 1.0) )
-                        plt.plot( paths , p[0]*((p[1]+s[1])*np.array( paths ) + 1.0) )
-                        plt.plot( paths , p[0]*((p[1]-s[1])*np.array( paths ) + 1.0) )
+			p , s = exponential().fit( paths, np.array( queue_length ) )
+			grow.append( p[1] )
+			grow_err.append( s[1] )
+			if True:
+	                        plt.plot( paths , p[0]*np.exp( p[1]*np.array( paths ) ) )
+	                        plt.plot( paths , p[0]*np.exp( (p[1]+s[1])*np.array( paths ) ) )
+	                        plt.plot( paths , p[0]*np.exp( (p[1]-s[1])*np.array( paths ) ) )
+                    	else:
+	                        plt.plot( paths , p[0]*(p[1]*np.array( paths ) + 1.0) )
+	                        plt.plot( paths , p[0]*((p[1]+s[1])*np.array( paths ) + 1.0) )
+	                        plt.plot( paths , p[0]*((p[1]-s[1])*np.array( paths ) + 1.0) )
                     plt.xlabel( r'Paths' , fontsize=plt_labsiz)
                     plt.ylabel( r'Queued Test Particles' , fontsize=plt_labsiz)
                     plt.figure( 2 )
