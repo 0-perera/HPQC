@@ -221,23 +221,23 @@ def run(self):
 	                        plt.plot( paths , p[0]*(p[1]*np.array( paths ) + 1.0) )
 	                        plt.plot( paths , p[0]*((p[1]+s[1])*np.array( paths ) + 1.0) )
 	                        plt.plot( paths , p[0]*((p[1]-s[1])*np.array( paths ) + 1.0) )
-			    plt.xlabel( r'Paths' , fontsize=plt_labsiz)
-			    plt.ylabel( r'Queued Test Particles' , fontsize=plt_labsiz)
-			    plt.figure( 2 )
-			    plt.cla()
-			    plt.errorbar( paths[2:] , grow , yerr=grow_err , fmt='o' )
-			    plt.xlabel( r'Paths' , fontsize=plt_labsiz)
-			    plt.ylabel( r'Growth Rate' , fontsize=plt_labsiz)
-			    plt.tick_params(axis='both', which='major', labelsize=plt_labsiz)
-			plt.pause( 0.001 )
-		    path_counter += 1
-		shape.plot_density( 3 )
+			plt.xlabel( r'Paths' , fontsize=plt_labsiz)
+			plt.ylabel( r'Queued Test Particles' , fontsize=plt_labsiz)
+			plt.figure( 2 )
+			plt.cla()
+			plt.errorbar( paths[2:] , grow , yerr=grow_err , fmt='o' )
+			plt.xlabel( r'Paths' , fontsize=plt_labsiz)
+			plt.ylabel( r'Growth Rate' , fontsize=plt_labsiz)
+			plt.tick_params(axis='both', which='major', labelsize=plt_labsiz)
+		plt.pause( 0.001 )
+	    path_counter += 1
+	shape.plot_density( 3 )
 	#indicate when queue is empty or max number of paths reached and the loop stops
-		if len( queue ) == 0:
-		    sys.stderr.write( 'Stopped.  Queue empty.\n' )
-		else:
-		    sys.stderr.write( 'Stopped.  Maximum paths reached.\n' )
-		sys.stderr.flush() 
+	if len( queue ) == 0:
+		sys.stderr.write( 'Stopped.  Queue empty.\n' )
+	else:
+		sys.stderr.write( 'Stopped.  Maximum paths reached.\n' )
+	sys.stderr.flush() 
 
 
 
