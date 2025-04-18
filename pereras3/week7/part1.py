@@ -195,4 +195,4 @@ for i in range(16):
     q3 = measureQubit()                   # pop qubit 3
     q2 = measureQubit()                   # pop qubit 2
     q1 = measureQubit()                   # pop qubit 1
-    print(q1+q2+q3,end=",")
+    print(q1+q2+q3,end=',')
