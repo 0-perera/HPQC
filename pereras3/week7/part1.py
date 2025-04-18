@@ -13,10 +13,10 @@ def applyGate(gate):
     
 # Move Qubit to stack top ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 def tosQubit(k):
-global workspace
-if k > 1:                                               # if non-trivial
-    workspace = np.reshape(workspace,(-1,2,2**(k-1)))
-    workspace = np.swapaxes(workspace,-2,-1)
+    global workspace
+    if k > 1:                                               # if non-trivial
+        workspace = np.reshape(workspace,(-1,2,2**(k-1)))
+        workspace = np.swapaxes(workspace,-2,-1)
 
 
 # Measure a Qubit ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
