@@ -85,13 +85,13 @@ pushQubit([1,0])
 print(workspace)
 pushQubit([3/5,4/5])               # push a 2nd qubit print(workspace)
 print(workspace)
-workspace = np.array([[1.]])       # create empty qubit stack pushQubit([1,0])
-pushQubit([1,0])
-original = workspace
+
+# workspace = np.array([[1.]])       # create empty qubit stack pushQubit([1,0])
+# pushQubit([1,0])
+# pushQubit([3/5,4/5]) 
+# original = workspace
 
 ''' Gates implementation '''
-theta = (45, 90, 180)
-gate_list = (X_gate, Y_gate, Z_gate, H_gate, S_gate, T_gate, Tinv_gate)
 
 # prove that the shortcut and the definition are the same
 print(np.matmul(X_gate,workspace))
@@ -101,6 +101,9 @@ print("output x-gate",workspace)
 
 
 # loop to try all the gates and with differeen thetas if they are defined by one to the original workspace
+theta = (45, 90, 180)
+gate_list = (X_gate, Y_gate, Z_gate, H_gate, S_gate, T_gate, Tinv_gate)
+
 print("initial input for all gates {}".format(original))
 for gate in gate_list:
     workspace = original
