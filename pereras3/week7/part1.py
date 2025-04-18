@@ -94,7 +94,7 @@ print(workspace)
 ''' Gates implementation '''
 
 # prove that the shortcut and the definition are the same
-print(np.matmul(X_gate,workspace))
+print(np.matmul(X_gate,[1,0]))
 print("input x-gate",workspace)
 applyGate(X_gate)                  # = NOT 
 print("output x-gate",workspace)
