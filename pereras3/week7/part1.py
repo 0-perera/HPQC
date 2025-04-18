@@ -78,7 +78,7 @@ TOFF_gate = np.array([[1, 0, 0, 0, 0, 0, 0, 0], # Toffoli gate
 
 
 
-''' Create a qubic and append more ''''
+''' Create a qubic and append more '''
 
 workspace = np.array([[1.]])       # create empty qubit stack pushQubit([1,0])
 pushQubit([1,0])
