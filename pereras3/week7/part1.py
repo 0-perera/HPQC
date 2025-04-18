@@ -11,11 +11,11 @@ def pushQubit(name,weights):
     global namestack
     if workspace.shape == (1,1):                  # if workspace empty
         namestack = []                            # then reset
-    namestack.append(name)                        # push name
-    weights = weights/np.linalg.norm(weights)     # normalize 
-    weights = np.array(weights,dtype=workspace[0,0].dtype) 
-    workspace = np.reshape(workspace,(1,-1))      # to row vector 
-    workspace = np.kron(workspace,weights)
+        namestack.append(name)                        # push name
+        weights = weights/np.linalg.norm(weights)     # normalize 
+        weights = np.array(weights,dtype=workspace[0,0].dtype) 
+        workspace = np.reshape(workspace,(1,-1))      # to row vector 
+        workspace = np.kron(workspace,weights)
 
 # def applyGate(gate):
 #     global workspace
@@ -26,8 +26,8 @@ def applyGate(gate,*names):
     global workspace
     for name in names:                   # move qubits to TOS
             tosQubit(name)
-        workspace = np.reshape(workspace,(-1,gate.shape[0]))
-        np.matmul(workspace,gate.T,out=workspace)
+            workspace = np.reshape(workspace,(-1,gate.shape[0]))
+            np.matmul(workspace,gate.T,out=workspace)
     
 # Move Qubit to stack top ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 # def tosQubit(k):
@@ -41,9 +41,9 @@ def tosQubit(name):
     global namestack
     k = len(namestack)-namestack.index(name)    # qubit pos
     if k > 1:                                   # if non-trivial
-    namestack.append(namestack.pop(-k))         # rotate name stack 
-    workspace = np.reshape(workspace,(-1,2,2**(k-1))) 
-    workspace = np.swapaxes(workspace,-2,-1)
+        namestack.append(namestack.pop(-k))         # rotate name stack 
+        workspace = np.reshape(workspace,(-1,2,2**(k-1))) 
+        workspace = np.swapaxes(workspace,-2,-1)
 
 
 # Measure a Qubit ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
