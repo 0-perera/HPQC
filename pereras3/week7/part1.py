@@ -24,7 +24,8 @@ def tosQubit(k):
 def probQubit():
     global workspace
     workspace = np.reshape(workspace,(-1,2)) 
-    return np.linalg.norm(workspace,axis=0)**2
+    np.linalg.norm(workspace,axis=0)**2
+    return prob / np.sum(prob)
     
 def measureQubit():
     global workspace
