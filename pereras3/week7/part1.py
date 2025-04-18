@@ -156,13 +156,13 @@ TOFF_gate = np.array([[1, 0, 0, 0, 0, 0, 0, 0], # Toffoli gate
 ''' Create a qubic and append more '''
 
 workspace = np.array([[1.]])       # create empty qubit stack pushQubit([1,0])
-pushQubit([1,0])
+pushQubit('Q1',np.array([1,0], dtype = complex))
 print(workspace)
-pushQubit([0,1])               # push a 2nd qubit print(workspace)
+pushQubit('Q2',np.array([1,0], dtype = complex))             # push a 2nd qubit print(workspace)
 print(workspace)
 
 workspace = np.array([[1.]], dtype = complex)       # create empty qubit stack pushQubit([1,0])
-pushQubit(np.array([1,0], dtype = complex))
+pushQubit('Q1',np.array([1,0], dtype = complex))
 original = workspace
 
 
@@ -171,10 +171,12 @@ original = workspace
 # Gates implementation #
 # ==================== #
 
-# prove that the shortcut and the definition are the same
+# prove that the shortcut and the definition are the same (only works with the simplified version of applyGate)
 print(np.matmul(X_gate,[1,0]))
+workspace = np.array([[1.]])       # create empty qubit stack pushQubit([1,0])
+pushQubit('Q1',np.array([1,0], dtype = complex))
 print("input x-gate",workspace)
-applyGate(X_gate)                  # = NOT 
+applyGate(X_gate, 'Q1')                  # = NOT 
 print("output x-gate",workspace)
 
 
@@ -188,7 +190,7 @@ print("initial input for all gates {}".format(original))
 # loop to implemente all no angled gates to the same workspace
 for gate, name in zip(gate_list, gate_name):
     workspace = original.copy()
-    applyGate(gate)
+    applyGate(gate, 'Q1')
     print(' output for {} is {}'.format(name, workspace))
 
 
@@ -202,7 +204,7 @@ for gate_a, name_a in zip(gate_angle, name_gate_angle):
         theta = np.deg2rad(angle)
         workspace = original.copy()
         gate = gate_a(theta)
-        applyGate(gate)
+        applyGate(gate, 'Q1')
         print('output for {} with angle {} (deg) is {}'.format(name_a, angle, workspace))
 
 
@@ -236,14 +238,14 @@ result_q = []
 workspace = np.array([[1.]]) 
 for i in range(16):
     pushQubit('Q1',np.array([1,0], dtype = complex))                      # push a zero qubit
-    applyGate(H_gate)                     # set equal 0 and 1 probability
-    pushQubit('Q1',np.array([1,0], dtype = complex))                      # push a 2nd zero qubit
-    applyGate(H_gate)                     # set equal 0 and 1 probability
-    pushQubit('Q1',np.array([1,0], dtype = complex))                      # push a dummy zero qubit
-    applyGate(TOFF_gate)                  # compute Q3 = Q1 AND Q2
-    q3 = measureQubit()                   # pop qubit 3
-    q2 = measureQubit()                   # pop qubit 2
-    q1 = measureQubit()                   # pop qubit 1
+    applyGate(H_gate, 'Q1')                     
+    pushQubit('Q2',np.array([1,0], dtype = complex))                      # push a 2nd zero qubit
+    applyGate(H_gate, , 'Q2')                     
+    pushQubit('Q3',np.array([1,0], dtype = complex))                      # push a dummy zero qubit
+    applyGate(TOFF_gate, 'Q3')                  # compute Q3 = Q1 AND Q2
+    q3 = measureQubit('Q3')                   # pop qubit 3
+    q2 = measureQubit('Q2')                   # pop qubit 2
+    q1 = measureQubit('Q1')                   # pop qubit 1
     result_q.append(q1+q2+q3)
 print(result_q[0])
 print(result_q[1:-1])
