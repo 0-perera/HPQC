@@ -39,7 +39,7 @@ def applyGate(gate,*names):
 def tosQubit(name):
     global workspace
     global namestack
-    print(namestack)
+    # print(namestack)
     k = len(namestack)-namestack.index(name)    # qubit pos
     if k > 1:                                   # if non-trivial
         namestack.append(namestack.pop(-k))         # rotate name stack 
