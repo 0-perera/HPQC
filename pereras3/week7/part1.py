@@ -23,11 +23,11 @@ def pushQubit(name,weights):
 #     np.matmul(workspace,gate.T,out=workspace)
 
 def applyGate(gate,*names):
-global workspace
-for name in names:                   # move qubits to TOS
-        tosQubit(name)
-    workspace = np.reshape(workspace,(-1,gate.shape[0]))
-    np.matmul(workspace,gate.T,out=workspace)
+    global workspace
+    for name in names:                   # move qubits to TOS
+            tosQubit(name)
+        workspace = np.reshape(workspace,(-1,gate.shape[0]))
+        np.matmul(workspace,gate.T,out=workspace)
     
 # Move Qubit to stack top ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 # def tosQubit(k):
