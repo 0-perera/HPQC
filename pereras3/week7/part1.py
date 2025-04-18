@@ -240,7 +240,7 @@ for i in range(16):
     pushQubit('Q1',np.array([1,0], dtype = complex))                      # push a zero qubit
     applyGate(H_gate, 'Q1')                     
     pushQubit('Q2',np.array([1,0], dtype = complex))                      # push a 2nd zero qubit
-    applyGate(H_gate, , 'Q2')                     
+    applyGate(H_gate, 'Q2')                     
     pushQubit('Q3',np.array([1,0], dtype = complex))                      # push a dummy zero qubit
     applyGate(TOFF_gate, 'Q3')                  # compute Q3 = Q1 AND Q2
     q3 = measureQubit('Q3')                   # pop qubit 3
