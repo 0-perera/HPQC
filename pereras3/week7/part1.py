@@ -92,7 +92,11 @@ workspace = np.array([[1.]], dtype = complex)       # create empty qubit stack p
 pushQubit(np.array([1,0], dtype = complex))
 original = workspace
 
-''' Gates implementation '''
+
+
+# ==================== #
+# Gates implementation #
+# ==================== #
 
 # prove that the shortcut and the definition are the same
 print(np.matmul(X_gate,[1,0]))
@@ -102,14 +106,37 @@ print("output x-gate",workspace)
 
 
 # loop to try all the gates and with differeen thetas if they are defined by one to the original workspace
-theta = (45, 90, 180)
+
 gate_list = (X_gate, Y_gate, Z_gate, H_gate, S_gate, T_gate, Tinv_gate)
 gate_name = ('X_gate', 'Y_gate', 'Z_gate', 'H_gate', 'S_gate', 'T_gate', 'Tinv_gate')
 print("initial input for all gates {}".format(original))
 
+
+# loop to implemente all no angled gates to the same workspace
 for gate, name in zip(gate_list, gate_name):
     workspace = original.copy()
     applyGate(gate)
     print(' output for {} is {}'.format(name, workspace))
+
+
+# loop to implemente all angled gates to the same workspace
+gate_angle = (P_gate, Rx_gate, Ry_gate, Rz_gate)
+name_gate_angle = ('P_gate', 'Rx_gate', 'Ry_gate', 'Rz_gate')
+theta_deg = (45, 90, 180)
+theta = [np.deg2rad(a) for a in theta_deg]
+
+for gate_a, name_a in zip(gate_angle, name_gate_angle):
+    for angle in theta:
+        workspace = original.copy()
+        gate = gate_a(angle)
+        applyGate(gate_a)
+        print('output for {} with angle {}°  is {}.format(name_a, np.rad2deg(angle), gate_a)
+
+
+
+
+
+
+
 
 
