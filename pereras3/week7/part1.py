@@ -1,42 +1,86 @@
 
 import numpy as np
 # Create/add Qubit ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
-def pushQubit(weights):
+# def pushQubit(weights):
+#     global workspace
+#     workspace = np.reshape(workspace,(1,-1)) 
+#     workspace = np.kron(workspace,weights)
+
+def pushQubit(name,weights):
     global workspace
-    workspace = np.reshape(workspace,(1,-1)) 
+    global namestack
+    if workspace.shape == (1,1):                  # if workspace empty
+        namestack = []                            # then reset
+    namestack.append(name)                        # push name
+    weights = weights/np.linalg.norm(weights)     # normalize 
+    weights = np.array(weights,dtype=workspace[0,0].dtype) 
+    workspace = np.reshape(workspace,(1,-1))      # to row vector 
     workspace = np.kron(workspace,weights)
 
-def applyGate(gate):
-    global workspace
-    workspace = np.reshape(workspace,(-1,gate.shape[0]))     
+# def applyGate(gate):
+#     global workspace
+#     workspace = np.reshape(workspace,(-1,gate.shape[0]))     
+#     np.matmul(workspace,gate.T,out=workspace)
+
+def applyGate(gate,*names):
+global workspace
+for name in names:                   # move qubits to TOS
+        tosQubit(name)
+    workspace = np.reshape(workspace,(-1,gate.shape[0]))
     np.matmul(workspace,gate.T,out=workspace)
     
 # Move Qubit to stack top ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
-def tosQubit(k):
+# def tosQubit(k):
+#     global workspace
+#     if k > 1:                                               # if non-trivial
+#         workspace = np.reshape(workspace,(-1,2,2**(k-1)))
+#         workspace = np.swapaxes(workspace,-2,-1)
+        
+def tosQubit(name):
     global workspace
-    if k > 1:                                               # if non-trivial
-        workspace = np.reshape(workspace,(-1,2,2**(k-1)))
-        workspace = np.swapaxes(workspace,-2,-1)
+    global namestack
+    k = len(namestack)-namestack.index(name)    # qubit pos
+    if k > 1:                                   # if non-trivial
+    namestack.append(namestack.pop(-k))         # rotate name stack 
+    workspace = np.reshape(workspace,(-1,2,2**(k-1))) 
+    workspace = np.swapaxes(workspace,-2,-1)
 
 
 # Measure a Qubit ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 
-def probQubit():
-    global workspace
-    workspace = np.reshape(workspace,(-1,2)) 
-    prob = np.linalg.norm(workspace,axis=0)**2
-    print('probability is', prob)
-    total_prob = np.sum(prob)
-    if total_prob != 1:
-        prob /= total_prob
-    return prob
+# def probQubit():
+#     global workspace
+#     workspace = np.reshape(workspace,(-1,2)) 
+#     prob = np.linalg.norm(workspace,axis=0)**2
+#     print('probability is', prob)
+#     total_prob = np.sum(prob)
+#     if total_prob != 1:
+#         prob /= total_prob
+#     return prob
     
-def measureQubit():
+# def measureQubit():
+#     global workspace
+#     prob = probQubit()
+#     measurement = np.random.choice(2,p=prob)         # select 0 or 1 
+#     workspace = (workspace[:,[measurement]]/
+#     np.sqrt(prob[measurement])) 
+#     return str(measurement)
+
+def probQubit(name):
     global workspace
-    prob = probQubit()
-    measurement = np.random.choice(2,p=prob)         # select 0 or 1 
+    tosQubit(name)
+    workspace = np.reshape(workspace,(-1,2))
+    prob = np.linalg.norm(workspace,axis=0)**2
+    return prob/prob.sum()                 # make sure sum is one
+
+def measureQubit(name): 
+    global workspace 
+    global namestack
+    prob = probQubit(name)
+    measurement = np.random.choice(2,p=prob)
     workspace = (workspace[:,[measurement]]/
-    np.sqrt(prob[measurement])) 
+                 np.sqrt(prob[measurement]))
+    namestack.pop()
     return str(measurement)
 
 
@@ -171,12 +215,10 @@ for gate_a, name_a in zip(gate_angle, name_gate_angle):
 # ==================================== #
 
 workspace = np.array([[1.]])
-pushQubit([1,0])
-pushQubit([0.6,0.8])
+pushQubit('Q1',np.array([1,0], dtype = complex))
+pushQubit('Q2',np.array([0,1], dtype = complex))
 print(workspace)
-tosQubit(2)
-print(workspace)
-print(np.reshape(workspace,(1,-1)))
+tosQubit('Q2')
 
 
 # =============== #
@@ -186,18 +228,18 @@ print(np.reshape(workspace,(1,-1)))
 meas_qubit = []
 workspace = np.array([[1. ]])
 for n in range(30):
-    pushQubit(np.array([0.6,0.8], dtype = complex))
+    pushQubit('Q1',np.array([1,0], dtype = complex))
     meas_qubit.append(measureQubit())
 print(meas_qubit)
 
 result_q = []
 workspace = np.array([[1.]]) 
 for i in range(16):
-    pushQubit([1,0])                      # push a zero qubit
+    pushQubit('Q1',np.array([1,0], dtype = complex))                      # push a zero qubit
     applyGate(H_gate)                     # set equal 0 and 1 probability
-    pushQubit([1,0])                      # push a 2nd zero qubit
+    pushQubit('Q1',np.array([1,0], dtype = complex))                      # push a 2nd zero qubit
     applyGate(H_gate)                     # set equal 0 and 1 probability
-    pushQubit([1,0])                      # push a dummy zero qubit
+    pushQubit('Q1',np.array([1,0], dtype = complex))                      # push a dummy zero qubit
     applyGate(TOFF_gate)                  # compute Q3 = Q1 AND Q2
     q3 = measureQubit()                   # pop qubit 3
     q2 = measureQubit()                   # pop qubit 2
