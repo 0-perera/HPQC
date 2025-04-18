@@ -130,4 +130,4 @@ for gate_a, name_a in zip(gate_angle, name_gate_angle):
         workspace = original.copy()
         gate = gate_a(theta)
         applyGate(gate_a)
-        print('output for {} with angle {} (deg) is {}'.format(name_a, angle, gate_a)
+        print('output for {} with angle {} (deg) is {}'.format(name_a, angle, gate_a))
