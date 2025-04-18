@@ -123,14 +123,14 @@ for gate, name in zip(gate_list, gate_name):
 gate_angle = (P_gate, Rx_gate, Ry_gate, Rz_gate)
 name_gate_angle = ('P_gate', 'Rx_gate', 'Ry_gate', 'Rz_gate')
 theta_deg = (45, 90, 180)
-theta = [np.deg2rad(a) for a in theta_deg]
 
 for gate_a, name_a in zip(gate_angle, name_gate_angle):
-    for angle in theta:
+    for angle in theta_deg:
+        theta = np.deg2rad(a)
         workspace = original.copy()
-        gate = gate_a(angle)
+        gate = gate_a(theta)
         applyGate(gate_a)
-        print('output for {} with angle {}°  is {}'.format(name_a, np.rad2deg(angle), gate_a)
+        print('output for {} with angle {}°  is {}'.format(name_a, angle, gate_a)
 
 
 
