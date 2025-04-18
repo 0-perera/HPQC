@@ -130,7 +130,7 @@ for gate_a, name_a in zip(gate_angle, name_gate_angle):
         workspace = original.copy()
         gate = gate_a(angle)
         applyGate(gate_a)
-        print('output for {} with angle {}°  is {}.format(name_a, np.rad2deg(angle), gate_a)
+        print('output for {} with angle {}°  is {}'.format(name_a, np.rad2deg(angle), gate_a)
 
 
 
