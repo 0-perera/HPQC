@@ -221,7 +221,7 @@ workspace = np.array([[1.]])
 pushQubit('Q1',np.array([1,0], dtype = complex))
 pushQubit('Q2',np.array([0,1], dtype = complex))
 print(workspace)
-tosQubit('Q2')
+tosQubit('Q1')
 
 
 # =============== #
