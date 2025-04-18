@@ -89,7 +89,7 @@ pushQubit([0,1])               # push a 2nd qubit print(workspace)
 print(workspace)
 
 workspace = np.array([[1.]], dtype = complex)       # create empty qubit stack pushQubit([1,0])
-pushQubit(np.array([1,0], dtype = complex)
+pushQubit(np.array([1,0], dtype = complex))
 original = workspace
 
 ''' Gates implementation '''
