@@ -40,7 +40,7 @@ def P_gate(theta):
     # Phase shift gate, even though shift is not the same as rotation,
     # the same angles will be implemented
     return np.array([[1,             0],
-                     [0,np.exp(phi*1j)]])
+                     [0,np.exp(theta*1j)]])
                      
 def Rx_gate(theta):                             # Y rotation gate
     return np.array([[np.cos(theta/2),-1j*np.sin(theta/2)],
