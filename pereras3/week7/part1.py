@@ -102,6 +102,6 @@ print("output x-gate",workspace)
 print('initial input for all gates')
 for gate in gate_list:
   applyGate(gate)
-  print(f' output for {gate} is {workspace}'
+  print(f' output for {gate} is {workspace}')
 
 
