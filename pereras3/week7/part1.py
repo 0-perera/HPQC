@@ -99,7 +99,7 @@ print("output x-gate",workspace)
 
 
 # loop to try all the gates and with differeen thetas if they are defined by one to the original workspace
-print(f'initial input for all gates {original}')
+print(f"initial input for all gates {original}")
 for gate in gate_list:
     workspace = original
     applyGate(gate)
