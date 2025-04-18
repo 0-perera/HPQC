@@ -50,7 +50,7 @@ def Ry_gate(theta):                             # Y rotation gate return
               
 def Rz_gate(theta):                             # Z rotation gate 
     return np.array([[np.exp(-1j*theta/2),0],
-                     [0,np.exp(1j*theta/2]])
+                     [0,np.exp(1j*theta/2)]])
                      
 CNOT_gate = np.array([[1, 0, 0, 0],             # Ctled NOT gate
                       [0, 1, 0, 0],             #=XORgate
