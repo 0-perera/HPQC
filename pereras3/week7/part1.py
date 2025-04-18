@@ -87,7 +87,7 @@ pushQubit([3/5,4/5])               # push a 2nd qubit print(workspace)
 print(workspace)
 original = workspace
 
-''' Gates implementation ''''
+''' Gates implementation '''
 theta = (45, 90, 180)
 gate_list = (X_gate, Y_gate, Z_gate, H_gate, S_gate, T_gate, Tinv_gate)
 
