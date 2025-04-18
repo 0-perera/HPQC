@@ -85,6 +85,8 @@ pushQubit([1,0])
 print(workspace)
 pushQubit([3/5,4/5])               # push a 2nd qubit print(workspace)
 print(workspace)
+workspace = np.array([[1.]])       # create empty qubit stack pushQubit([1,0])
+pushQubit([1,0])
 original = workspace
 
 ''' Gates implementation '''
