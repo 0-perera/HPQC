@@ -25,7 +25,10 @@ def probQubit():
     global workspace
     workspace = np.reshape(workspace,(-1,2)) 
     prob = np.linalg.norm(workspace,axis=0)**2
-    return prob / np.sum(prob)
+    total_prob = np.sum(prob)
+    if total_prob != 1:
+        prob /= total_prob
+    return prob
     
 def measureQubit():
     global workspace
