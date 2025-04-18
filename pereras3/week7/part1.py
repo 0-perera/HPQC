@@ -36,7 +36,9 @@ T_gate = np.array([[1,                0],       # = P(pi/4)
 Tinv_gate = np.array([[1, 0],                   # = P(-pi/4) 
                       [0,np.exp(np.pi/4j)]])    # = T^-1
                       
-def P_gate(phi):                                # Phase shift gate
+def P_gate(theta):
+    # Phase shift gate, even though shift is not the same as rotation,
+    # the same angles will be implemented
     return np.array([[1,             0],
                      [0,np.exp(phi*1j)]])
                      
@@ -45,7 +47,7 @@ def Rx_gate(theta):                             # Y rotation gate
                      [-1j*np.sin(theta/2),np.cos(theta/2)]])
                      
 def Ry_gate(theta):                             # Y rotation gate return 
-    np.array([[np.cos(theta/2),-np.sin(theta/2)],
+    return np.array([[np.cos(theta/2),-np.sin(theta/2)],
               [np.sin(theta/2), np.cos(theta/2)]])
               
 def Rz_gate(theta):                             # Z rotation gate 
@@ -86,8 +88,8 @@ print(workspace)
 pushQubit([0,1])               # push a 2nd qubit print(workspace)
 print(workspace)
 
-workspace = np.array([[1.]])       # create empty qubit stack pushQubit([1,0])
-pushQubit([1,0])
+workspace = np.array([[1.]], dtype = complex)       # create empty qubit stack pushQubit([1,0])
+pushQubit(np.array([1,0], dtype = complex)
 original = workspace
 
 ''' Gates implementation '''
@@ -104,11 +106,10 @@ theta = (45, 90, 180)
 gate_list = (X_gate, Y_gate, Z_gate, H_gate, S_gate, T_gate, Tinv_gate)
 gate_name = ('X_gate', 'Y_gate', 'Z_gate', 'H_gate', 'S_gate', 'T_gate', 'Tinv_gate')
 print("initial input for all gates {}".format(original))
-for i in range(len(gate_list)):
-    gate = gate_list[i]
-    gate_name = gate_name[i]
-    workspace = original
+
+for gate, name in zip(gate_list, gate_name):
+    workspace = original.copy()
     applyGate(gate)
-    print(' output for {} is {}'.format(gate_name, workspace))
+    print(' output for {} is {}'.format(name, workspace))
 
 
