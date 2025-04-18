@@ -230,8 +230,8 @@ tosQubit('Q2')
 meas_qubit = []
 workspace = np.array([[1. ]])
 for n in range(30):
-    pushQubit('Q1',np.array([1,0], dtype = complex))
-    meas_qubit.append(measureQubit())
+    pushQubit('Qn',np.array([1,0], dtype = complex))
+    meas_qubit.append(measureQubit('Qn'))
 print(meas_qubit)
 
 result_q = []
