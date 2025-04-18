@@ -154,7 +154,7 @@ for gate_a, name_a in zip(gate_angle, name_gate_angle):
         workspace = original.copy()
         gate = gate_a(theta)
         applyGate(gate)
-        print('output for {} with angle {} (deg) is {}'.format(name_a, angle, gate_a))
+        print('output for {} with angle {} (deg) is {}'.format(name_a, angle, workspace))
 
 
 
@@ -178,12 +178,14 @@ print(np.reshape(workspace,(1,-1)))
 # Measure a Qubit #
 # =============== #
 
+meas_qubit = []
 workspace = np.array([[1. ]])
 for n in range(30):
-    pushQubit([0.6,0.8])
-    print(measureQubit(), end=",")
+    pushQubit(np.array([0.6,0.8], dtype = complex))
+    meas.append(measureQubit())
+print(meas_qubit)
 
-
+result_q = []
 workspace = np.array([[1.]]) 
 for i in range(16):
     pushQubit([1,0])                      # push a zero qubit
@@ -195,4 +197,6 @@ for i in range(16):
     q3 = measureQubit()                   # pop qubit 3
     q2 = measureQubit()                   # pop qubit 2
     q1 = measureQubit()                   # pop qubit 1
-    print(q1+q2+q3,end=',')
+    result_q.append(q1+q2+q3)
+print(result_q[0])
+print(result_q[1:-1])
