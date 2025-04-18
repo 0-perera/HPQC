@@ -182,7 +182,7 @@ meas_qubit = []
 workspace = np.array([[1. ]])
 for n in range(30):
     pushQubit(np.array([0.6,0.8], dtype = complex))
-    meas.append(measureQubit())
+    meas_qubit.append(measureQubit())
 print(meas_qubit)
 
 result_q = []
