@@ -3,7 +3,8 @@ import numpy as np
 
 def pushQubit(weights):
     global workspace
-    workspace = np.reshape(workspace,(1,-1)) workspace = np.kron(workspace,weights)
+    workspace = np.reshape(workspace,(1,-1)) 
+    workspace = np.kron(workspace,weights)
 
 def applyGate(gate):
     global workspace
