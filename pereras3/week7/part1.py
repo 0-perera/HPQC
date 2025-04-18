@@ -129,5 +129,5 @@ for gate_a, name_a in zip(gate_angle, name_gate_angle):
         theta = np.deg2rad(angle)
         workspace = original.copy()
         gate = gate_a(theta)
-        applyGate(gate_a)
+        applyGate(gate)
         print('output for {} with angle {} (deg) is {}'.format(name_a, angle, gate_a))
