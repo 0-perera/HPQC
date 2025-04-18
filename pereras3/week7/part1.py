@@ -126,7 +126,7 @@ theta_deg = (45, 90, 180)
 
 for gate_a, name_a in zip(gate_angle, name_gate_angle):
     for angle in theta_deg:
-        theta = np.deg2rad(a)
+        theta = np.deg2rad(angle)
         workspace = original.copy()
         gate = gate_a(theta)
         applyGate(gate_a)
