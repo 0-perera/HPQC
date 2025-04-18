@@ -102,11 +102,12 @@ print("output x-gate",workspace)
 # loop to try all the gates and with differeen thetas if they are defined by one to the original workspace
 theta = (45, 90, 180)
 gate_list = (X_gate, Y_gate, Z_gate, H_gate, S_gate, T_gate, Tinv_gate)
-
+gate_name = ('X_gate', 'Y_gate', 'Z_gate', 'H_gate', 'S_gate', 'T_gate', 'Tinv_gate')
 print("initial input for all gates {}".format(original))
 for gate in gate_list:
+    gate_name = gate_name[i]
     workspace = original
     applyGate(gate)
-    print(' output for {} is {}'.format(gate, workspace))
+    print(' output for {} is {}'.format(gate_name, workspace))
 
 
