@@ -181,7 +181,7 @@ print(np.reshape(workspace,(1,-1)))
 workspace = np.array([[1. ]])
 for n in range(30):
     pushQubit([0.6,0.8])
-    print(measureQubit(), end="")
+    print(measureQubit(), end=",")
 
 
 workspace = np.array([[1.]]) 
