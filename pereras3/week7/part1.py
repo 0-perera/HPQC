@@ -11,11 +11,11 @@ def pushQubit(name,weights):
     global namestack
     if workspace.shape == (1,1):                  # if workspace empty
         namestack = []                            # then reset
-        namestack.append(name)                        # push name
-        weights = weights/np.linalg.norm(weights)     # normalize 
-        weights = np.array(weights,dtype=workspace[0,0].dtype) 
-        workspace = np.reshape(workspace,(1,-1))      # to row vector 
-        workspace = np.kron(workspace,weights)
+    namestack.append(name)                        # push name
+    weights = weights/np.linalg.norm(weights)     # normalize 
+    weights = np.array(weights,dtype=workspace[0,0].dtype) 
+    workspace = np.reshape(workspace,(1,-1))      # to row vector 
+    workspace = np.kron(workspace,weights)
 
 # def applyGate(gate):
 #     global workspace
