@@ -13,7 +13,7 @@ def pushQubit(name,weights):
         namestack = []                            # then reset
     namestack.append(name)                        # push name
     weights = weights/np.linalg.norm(weights)     # normalize 
-    weights = np.array(weights,dtype=workspace[0,0].dtype) 
+    weights = np.array(weights,dtype=np.complex128) 
     workspace = np.reshape(workspace,(1,-1))      # to row vector 
     workspace = np.kron(workspace,weights)
 
@@ -156,7 +156,7 @@ TOFF_gate = np.array([[1, 0, 0, 0, 0, 0, 0, 0], # Toffoli gate
 
 ''' Create a qubic and append more '''
 
-workspace = np.array([[1.]])       # create empty qubit stack pushQubit([1,0])
+workspace = np.array([[1.]], dtype=complex)       # create empty qubit stack pushQubit([1,0])
 pushQubit('Q1',np.array([1,0], dtype = complex))
 print(workspace)
 pushQubit('Q2',np.array([1,0], dtype = complex))             # push a 2nd qubit print(workspace)
