@@ -72,9 +72,7 @@ def probQubit(name):
     tosQubit(name)
     workspace = np.reshape(workspace,(-1,2))
     prob = np.linalg.norm(workspace,axis=0)**2
-    print('prob sum is {}'.format(prob.sum())
-    workspace = np.reshape(workspace,(-1,2))
-    prob = np.linalg.norm(workspace,axis=0)**2
+    print('prob sum is {}'.format(prob.sum()))
     return prob                 # make sure sum is one
 
 def measureQubit(name): 
