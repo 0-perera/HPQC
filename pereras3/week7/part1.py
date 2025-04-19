@@ -73,7 +73,7 @@ def probQubit(name):
     workspace = np.reshape(workspace,(-1,2))
     prob = np.linalg.norm(workspace,axis=0)**2
     print('prob sum is {}'.format(prob.sum())
-    return 1                 # make sure sum is one
+    return prob                 # make sure sum is one
 
 def measureQubit(name): 
     global workspace 
