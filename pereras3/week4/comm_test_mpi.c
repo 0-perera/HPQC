@@ -36,7 +36,7 @@ int main(int argc, char **argv)
 	check_uni_size(uni_size);
 
 	// checks what task to do and does it
-	check_task(uni_size, my_rank, num_arg);
+	check_task(uni_size, my_rank);
 
 	// finalise MPI
 	ierror = MPI_Finalize();
@@ -122,7 +122,7 @@ void check_task(int uni_size, int my_rank)
 	} // end if (0 == my_rank)
 	else // i.e. (0 != my_rank)
 	{
-		client_task(my_rank);
+		client_task(my_rank, uni_size);
 	} // end else // i.e. (0 != my_rank)
 }
 
