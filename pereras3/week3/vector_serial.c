@@ -59,7 +59,7 @@ void initialise_vector(int vector[], int size, int initial)
 	for (int i = 0; i < size; i++)
 	{
 		// sets the elements of the vector to the initial value
-		vector[i] = initial;
+		vector[i] = i + 1;
 	}
 }
 
