@@ -42,7 +42,7 @@ It is observe that using a parrallel code reduced the running time by an order o
 
 
 # Part 2: MPI exercise breakdown 
--  Flowchart
+- 
 
 
 
