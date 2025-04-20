@@ -1,9 +1,8 @@
 
-# ~~~~~~~~~~~~~~~~~~~ #
-# Part 1: hello_world #
-# ~~~~~~~~~~~~~~~~~~~ #
 
-  # hello_mpi.c #
+# Part 1: hello_world 
+
+  ## hello_mpi.c 
 - 2 process
   - real    0m0.394s
   - user    0m0.098s
@@ -22,7 +21,7 @@
 
   #check
 
-  # hello_mpi_serial.c #
+  ## hello_mpi_serial.c #
 - 2 process
   - real    0m0.004s
   - user    0m0.002s
@@ -42,26 +41,15 @@
 
 
 
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
-# Part 2: MPI exercise breakdown #
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
-
-# Flowchart
+## Part 2: MPI exercise breakdown 
+-  Flowchart
 
 
 
 
 
+# Part 3: MPI MPI Vector Addition 
 
-
-
-
-
-
-
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
-# Part 3: MPI MPI Vector Addition  #
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 
 # vector_serial.c
 - output for 10:
