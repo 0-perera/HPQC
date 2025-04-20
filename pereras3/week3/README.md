@@ -41,7 +41,7 @@
 
 
 
-## Part 2: MPI exercise breakdown 
+# Part 2: MPI exercise breakdown 
 -  Flowchart
 
 
