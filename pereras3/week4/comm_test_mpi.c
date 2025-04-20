@@ -2,7 +2,7 @@
 #include <mpi.h>
 #include <stdlib.h>
 // function declarations
-int root_task(int uni_size);
+int root_task(int uni_size, int my_rank);
 void client_task(int my_rank, int uni_size);
 void check_uni_size(int uni_size);
 void check_task(int uni_size, int my_rank);
@@ -44,7 +44,7 @@ int main(int argc, char **argv)
 }
 
 	
-int root_task(int uni_size)
+int root_task(int uni_size, int my_rank)
 {
 	// creates and initialies transmission variables
 	int recv_message, count, dest, source, tag;
@@ -118,7 +118,7 @@ void check_task(int uni_size, int my_rank)
 	// checks which process is running and calls the appropriate task
 	if (0 == my_rank)
 	{
-		root_task(uni_size);
+		root_task(uni_size, my_rank);
 	} // end if (0 == my_rank)
 	else // i.e. (0 != my_rank)
 	{
