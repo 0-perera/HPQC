@@ -16,9 +16,7 @@ int main(int argc, char **argv)
 	// declare and initialise error handling variable
 	int ierror = 0;
 
-	// declare and initialise the numerical argument variable
-	int num_arg = check_args(argc, argv);
-
+	
 	// intitalise MPI
 	ierror = MPI_Init(&argc, &argv);
 	
