@@ -10,6 +10,10 @@ int check_args(int argc, char **argv);
 void check_uni_size(int uni_size);
 void check_task(int uni_size, int my_rank, int num_arg);
 
+// main():
+// Ensures that the user gave a numerical input. Then, sets up MPI, 
+// to ensure messages can pass between processes. It also identifies 
+// the type of processes to ensure that the data goes through the right operation.
 int main(int argc, char **argv) 
 {
 	// declare and initialise error handling variable
@@ -40,6 +44,11 @@ int main(int argc, char **argv)
 	return 0;
 }
 
+
+//root_task():
+// Collects the messages sent by the clients and sum them 
+// all together, printing the final result
+
 int root_task(int uni_size)
 {
 
@@ -66,6 +75,9 @@ int root_task(int uni_size)
 	return output_sum;
 }
 
+
+// client_task(): 
+// sends to the root a value (num_arg)  and its position (my_rank) in the MPI communicator
 void client_task(int my_rank, int num_arg)
 {
 	// creates and initialies transmission variables
@@ -83,6 +95,10 @@ void client_task(int my_rank, int num_arg)
 	MPI_Send(&send_message, count, MPI_INT, dest, tag, MPI_COMM_WORLD);
 }
 
+
+// check_args():
+// Validates that the necessary inputs have been defined and extracts the numerical 
+// argument passed to the program. If any error, will print a message.
 int check_args(int argc, char **argv)
 {
 	// declare and initialise the numerical argument
@@ -106,6 +122,10 @@ int check_args(int argc, char **argv)
 	return num_arg;
 }
 
+
+// check_uni_size():
+// makes sure that there is at least one process (the root)
+// before the program keeps running
 void check_uni_size(int uni_size)
 {
 	// sets the minimum universe size
@@ -126,6 +146,10 @@ void check_uni_size(int uni_size)
 	}
 }
 
+
+// check_task():
+// checks whether the process is the root (if rank == 0) or a client (else) ,  ending num_arg and my_rank
+// to root_task() or client_task(), respectively, to ensure that the right task is performed
 void check_task(int uni_size, int my_rank, int num_arg)
 {
 	// checks which process is running and calls the appropriate task
