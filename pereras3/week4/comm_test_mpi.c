@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <mpi.h>
+#include <stdlib.h>
 // function declarations
 int root_task(int uni_size);
 void client_task(int my_rank);
