@@ -50,8 +50,7 @@
 
 # Part 3: MPI MPI Vector Addition 
 
-
-# vector_serial.c
+## vector_serial.c
 - output for 10:
   - real    0m0.002s
   - user    0m0.001s
@@ -65,6 +64,6 @@
   - user    0m0.001s
   - sys     0m0.001s
 
-# vector_parallel.c
+## vector_parallel.c
 
-# create the parallel version
+ create the parallel version
