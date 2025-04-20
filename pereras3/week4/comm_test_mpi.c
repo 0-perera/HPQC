@@ -3,7 +3,7 @@
 #include <stdlib.h>
 // function declarations
 int root_task(int uni_size);
-void client_task(int my_rank);
+void client_task(int my_rank, int uni_size);
 void check_uni_size(int uni_size);
 void check_task(int uni_size, int my_rank);
 
@@ -68,7 +68,7 @@ int root_task(int uni_size)
 
 
 
-void client_task(int my_rank)
+void client_task(int my_rank, int uni_size)
 {
 
 	int send_message, count, dest, tag;
