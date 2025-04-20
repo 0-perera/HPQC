@@ -2,10 +2,9 @@
 #include <mpi.h>
 // function declarations
 int root_task(int uni_size);
-void client_task(int my_rank, int num_arg);
-int check_args(int argc, char **argv);
+void client_task(int my_rank);
 void check_uni_size(int uni_size);
-void check_task(int uni_size, int my_rank, int num_arg);
+void check_task(int uni_size, int my_rank);
 
 // main():
 // Ensures that the user gave a numerical input. Then, sets up MPI, 
