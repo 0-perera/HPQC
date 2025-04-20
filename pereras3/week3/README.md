@@ -19,7 +19,7 @@
   - sys     0m0.239s
   - user + sys = 0m0.441 > real
 
-  #check
+  the greater the loop, the running time will increase meaningfully.
 
   ## hello_mpi_serial.c #
 - 2 process
@@ -38,7 +38,7 @@
   - sys     0m0.000s
   - user + sys = 0m0.002 < real
 
-
+It is observe that using a parrallel code reduced the running time by an order of 2 ciphers. The difference of runtime is also smaller between the scenarios presented.
 
 
 # Part 2: MPI exercise breakdown 
@@ -53,16 +53,19 @@
 ## vector_serial.c
 - output for 10:
   - real    0m0.002s
-  - user    0m0.001s
-  - sys     0m0.001s
+  - user    0m0.002s
+  - sys     0m0.000s
 - output for 10 000:
   - real    0m0.002s
   - user    0m0.001s
   - sys     0m0.001s
 - - output for 10 000 000:
-  - real    0m0.002s
-  - user    0m0.001s
-  - sys     0m0.001s
+  - real    0m0.086s
+  - user    0m0.062s
+  - sys     0m0.024s
+
+for each ouput, the code was run a few times, and it was observed that user + sys was always near to real time, sometimes a bit smaller, greater or equal. However, is also observed how the bigger the vector the slower the code, but with an exponential behaviour since there was a step of 10^3 between the 3 cases, and for the vector 10 and 10^4, the code runtime was similar while for 10^8 was much  greater.
+
 
 ## vector_parallel.c
 
