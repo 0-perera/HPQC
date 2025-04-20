@@ -41,7 +41,9 @@ int main(int argc, char **argv)
 	return 0;
 }
 
-	
+//root_task():
+// Collects the messages sent by the clients and sum them 
+// all together, printing the final result	
 int root_task(int uni_size, int my_rank)
 {
 	// creates and initialies transmission variables
@@ -65,10 +67,11 @@ int root_task(int uni_size, int my_rank)
 } // end if (0 == my_rank)
 
 
-
+// client_task(): 
+// sends to the root a value (num_arg)  and its position (my_rank) in the MPI communicator
 void client_task(int my_rank, int uni_size)
 {
-
+	// creates and initialies transmission variables
 	int send_message, count, dest, tag;
 	dest = tag = 0;
 	count = 1;
@@ -76,7 +79,7 @@ void client_task(int my_rank, int uni_size)
 	send_message = my_rank * 10;
 
 	// sends the message
-	MPI_Send(&send_message, count, MPI_INT, dest, tag, MPI_COMM_WORLD);
+	MPI_Ssend(&send_message, count, MPI_INT, dest, tag, MPI_COMM_WORLD);
 
 	// prints the message from the sender
 	printf("Hello, I am %d of %d. Sent %d to Rank %d\n",
