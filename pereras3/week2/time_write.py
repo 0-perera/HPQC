@@ -17,7 +17,7 @@ def main():
       # iterates over all numbers up to the input
       for i in range(in_arg):
           # prints the index
-          f.write(f"{i}, ")
+          fn.write(f"{i}, ")
     # gets the end time for the loop
     end_time = time.time()
 
