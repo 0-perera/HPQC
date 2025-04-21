@@ -12,12 +12,20 @@ int main(int argc, char **argv)
 	char buffer[256];
 	
 	FILE *fn = fopen("input_file.txt", "r");
+	if (fn == NULL) {
+	        perror("Error opening file");
+	        exit(EXIT_FAILURE);
+	}
+	
+	// gets the time before the loop
+	timespec_get(&start_time, TIME_UTC);
 	
 	while (fgets(buffer, sizeof(buffer), fn) != NULL) {
-		printf("%s, ", buffer);
+		printf("%s", buffer);
 	}
-	// gets the time before the loop
-	timespec_get(&start_time, TIME_UTC);		
+	//return error if no file is being open
+	
+			
 	
 	// gets the time after the loop
         timespec_get(&end_time, TIME_UTC);
