@@ -13,7 +13,7 @@ int main(int argc, char **argv)
 	
 	FILE *fn = fopen("input_file.txt", "r");
 	
-	while (fgets(buffer, sizeof(buffer), fp) != NULL) {
+	while (fgets(buffer, sizeof(buffer), fn) != NULL) {
 		printf("%s, ", buffer);
 	}
 	// gets the time before the loop
