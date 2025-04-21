@@ -18,7 +18,7 @@ int main(int argc, char **argv)
 	{
 		// converts the first argument to an integer
 		input = atoi(argv[1]);
-    FILE *fn = fopen('output_times.txt', 'w');
+    		FILE *fn = fopen('output_times.txt', 'w');
     
 	}
 	else //(argc != 2)
@@ -35,7 +35,7 @@ int main(int argc, char **argv)
 	for (i = 0; i < input; i++)
 	{
 		// prints the index
-		printf("%d, ", i);
+		fprintf(fn,"%d, ", i);
 	}
 	// gets the time after the loop
         timespec_get(&end_time, TIME_UTC);
