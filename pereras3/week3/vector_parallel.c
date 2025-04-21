@@ -10,6 +10,7 @@ void initialise_vector(int vector[], int size, int initial);
 void print_vector(int vector[], int size);
 int sum_vector(int vector[], int size);
 void check_uni_size(int uni_size);
+void check_task(int uni_size, int my_rank, int num_arg);
 
 int main(int argc, char **argv)
 {
@@ -102,8 +103,7 @@ void client_task(int my_rank, int num_arg)
 	MPI_Send(&my_sum, count, MPI_INT, dest, tag, MPI_COMM_WORLD);
 	// if we use malloc, must free when done!
 	free(my_vector);
-
-	return 0;
+	return;
 }
 
 
