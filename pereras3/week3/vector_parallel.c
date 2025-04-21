@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <mpi.h>
 
 // declares the functions that will be called within main
 // note how declaration lines are similar to the initial line
@@ -8,6 +9,7 @@ int check_args(int argc, char **argv);
 void initialise_vector(int vector[], int size, int initial);
 void print_vector(int vector[], int size);
 int sum_vector(int vector[], int size);
+void check_uni_size(int uni_size);
 
 int main(int argc, char **argv)
 {
@@ -62,7 +64,7 @@ int root_task(int uni_size)
 
     // prints the sum
 	  printf("Sum: %d\n", output_sum);
-    return outputsum;
+    return output_sum;
 	} // end for (source = 1; source < uni_size; source++)
 
 
@@ -97,24 +99,15 @@ void client_task(int my_rank, int num_arg)
   // creates the message
 
 	// sends the message
-	MPI_Send(&my_aum, count, MPI_INT, dest, tag, MPI_COMM_WORLD);
-}
-
-
-
-  
-	
-
-
-	// TODO: put some code here that makes a more meaningful vector
-
-
-
+	MPI_Send(&my_sum, count, MPI_INT, dest, tag, MPI_COMM_WORLD);
 	// if we use malloc, must free when done!
 	free(my_vector);
 
 	return 0;
 }
+
+
+
 
 // defines a function to sum a vector of ints into another int
 int sum_vector(int vector[], int size)
@@ -193,4 +186,26 @@ void check_task(int uni_size, int my_rank, int num_arg)
 	{
 		client_task(my_rank, num_arg);
 	} // end else // i.e. (0 != my_rank)
+}
+
+
+
+void check_uni_size(int uni_size)
+{
+	// sets the minimum universe size
+	int min_uni_size = 2;
+	// checks there are sufficient tasks to communicate with
+	if (uni_size >= min_uni_size)
+	{
+		return;
+	} // end if (uni_size >= min_uni_size)
+	else // i.e. uni_size < min_uni_size
+	{
+		// Raise an error
+		fprintf(stderr, "Unable to communicate with fewer than %d processes.", min_uni_size);
+		fprintf(stderr, "MPI communicator size = %d\n", uni_size);
+
+		// and exit COMPLETELY
+		exit(-1);
+	}
 }
