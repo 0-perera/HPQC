@@ -7,26 +7,14 @@ struct timespec calculate_runtime(struct timespec start_time, struct timespec en
 
 int main(int argc, char **argv) 
 {
-	// creates and initialises the variables
-	int i, input;
-	i = input = 0;
 	struct timespec start_time, end_time, time_diff;
 	double runtime = 0.0;
-
-	// checks if there are the right number of arguments
-	if (argc == 2)
-	{
-		// converts the first argument to an integer
-		input = atoi(argv[1]);
-	}
-	else //(argc != 2)
-	{
-		// raises an error
-		fprintf(stderr, "Incorrect arguments.  Usage: time_print [NUM]\ne.g. \n time_print 3\n");
-		// and crashes out
-		exit(-1);
-	}
+	char buffer[256];
 	
+	FILE *fn = fopen("input_file.txt", "r");
+	
+	while (fgets(buffer sizeof(buffer), fp) != NULL) {
+	}
 	// gets the time before the loop
 	timespec_get(&start_time, TIME_UTC);
 	// iterates over all numbers up the input
