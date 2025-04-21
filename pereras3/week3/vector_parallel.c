@@ -61,11 +61,11 @@ int root_task(int uni_size)
 		MPI_Recv(&recv_message, count, MPI_INT, source, tag, MPI_COMM_WORLD, &status);
 		// adds the values to a running tally
 		output_sum += recv_message;
-
+	}
     // prints the sum
 	  printf("Sum: %d\n", output_sum);
     return output_sum;
-	} // end for (source = 1; source < uni_size; source++)
+} // end for (source = 1; source < uni_size; source++)
 
 
 
