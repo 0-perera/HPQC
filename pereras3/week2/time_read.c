@@ -14,7 +14,7 @@ int main(int argc, char **argv)
 	FILE *fn = fopen("input_file.txt", "r");
 	
 	while (fgets(buffer sizeof(buffer), fp) != NULL) {
-		printf("%d, ", i);
+		printf("%d, ", buffer);
 	}
 	// gets the time before the loop
 	timespec_get(&start_time, TIME_UTC);		
