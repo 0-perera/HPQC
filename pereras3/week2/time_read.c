@@ -14,14 +14,10 @@ int main(int argc, char **argv)
 	FILE *fn = fopen("input_file.txt", "r");
 	
 	while (fgets(buffer sizeof(buffer), fp) != NULL) {
+		printf("%d, ", i);
 	}
 	// gets the time before the loop
-	timespec_get(&start_time, TIME_UTC);
-	// iterates over all numbers up the input
-	for (i = 0; i < input; i++)
-	{
-		// prints the index
-		printf("%d, ", i);
+	timespec_get(&start_time, TIME_UTC);		
 	}
 	// gets the time after the loop
         timespec_get(&end_time, TIME_UTC);
