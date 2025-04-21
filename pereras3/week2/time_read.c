@@ -18,7 +18,7 @@ int main(int argc, char **argv)
 	}
 	// gets the time before the loop
 	timespec_get(&start_time, TIME_UTC);		
-	}
+	
 	// gets the time after the loop
         timespec_get(&end_time, TIME_UTC);
 
