@@ -70,4 +70,4 @@ for each ouput, the code was run a few times, and it was observed that user + sy
 
 ## vector_parallel.c
 
- create the parallel version
+for smaller vectors, the serial code works better than the parallel, which can become more efficient with larger vectors.
